@@ -1,0 +1,60 @@
+<!--
+  Generated template for the Api1Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalles del producto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color:#CBCBCB">
+
+
+    <ion-card>
+
+      <ion-slides pager>
+
+        <ion-slide *ngFor = 'let img of imgs'>
+     
+        <img  src="https://img.segundamano.mx/cover/{{img.path}}">
+     
+      </ion-slide>
+
+      </ion-slides>
+  
+    </ion-card>
+
+    <ion-card>
+
+        <h2 *ngIf= "consola.ad.hasOwnProperty('list_price')">Precio: {{consola.ad.list_price.label}}</h2>
+
+        <h2 *ngIf= "consola.ad.hasOwnProperty('body')">{{consola.ad.body}}</h2>
+        
+        <h2  *ngIf= "consola.ad.hasOwnProperty('locations')">{{consola.ad.locations[0].label}}</h2>
+
+        <h2 *ngIf= "consola.ad.hasOwnProperty('list_time')">Fecha de Publicación: {{consola.ad.list_time.label}}</h2>
+       
+        <h2 *ngIf= "consola.ad.hasOwnProperty('user')">Usuario: {{consola.ad.user.account.name}}</h2>
+  
+    </ion-card>
+
+     <ion-card>
+
+      <ion-item>{{consola.ad.subject}}
+      <ion-icon *ngIf= '!fav.existe(consola)' name="heart" item-end (click)='favoritos(consola)'></ion-icon>
+      <ion-icon *ngIf= 'fav.existe(consola)' name="heart" color='danger' item-end (click)= "fav.remove(consola)"></ion-icon>
+    </ion-item>
+    
+      <ion-icon name="share" item-end></ion-icon>
+    
+    
+
+     
+  
+    </ion-card> 
+
+
+</ion-content>

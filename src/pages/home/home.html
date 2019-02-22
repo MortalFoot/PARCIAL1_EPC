@@ -1,14 +1,64 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Segunda Mano
+      </ion-title>
+  
+     <ion-buttons end>
+  
+      <button ion-button icon-only (click)="buscar()">
+  
+        <ion-icon name="search"></ion-icon>
+  
+  
+      </button>
+  
+  
+     </ion-buttons>
+  
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding style="background-color:#315D7B ">
+  
+  <ion-grid>
+    <ion-row>
+    
+      <ion-col  *ngFor='let consola of consolas' col-2>
+       
+          <ion-card (click) = 'verConsolas(consola)'>
+
+              <img *ngIf="consola.ad.hasOwnProperty('thumbnail')" src="https://img.segundamano.mx/cover/{{consola.ad.thumbnail.path}}">
+
+              <img width="200px" height="100px" (click)="verConsolas(consola)" *ngIf="!consola.ad.hasOwnProperty('thumbnail')" src="../assets/imgs/logo.png">
+
+
+            <ion-card-content>
+               
+                
+              <h2  *ngIf= "consola.ad.hasOwnProperty('locations')">{{consola.ad.locations[0].label}}</h2>
+
+
+                <h2  *ngIf= "consola.ad.hasOwnProperty('list_price')">{{consola.ad.list_price.label}}</h2>
+               
+                <h2  *ngIf= "consola.ad.hasOwnProperty('subject')">{{consola.ad.subject}}</h2>
+               
+
+
+
+           
+
+            </ion-card-content>
+
+              
+            
+              </ion-card>
+
+      </ion-col>
+
+    </ion-row>
+
+
+  </ion-grid>
+
 </ion-content>
